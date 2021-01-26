@@ -16,8 +16,7 @@ class Count extends Component {
     )
 
     render() {
-        console.log('Count', this.props)
-        const {count} = this.props
+        const {count, personCount} = this.props
         return (
             <div>
                 <h2>Count: {count}</h2> 
@@ -25,13 +24,14 @@ class Count extends Component {
                 <button style={{margin: '5px', padding: '3px'}} onClick={this.adjustCount(ADD)}>+</button>
                 <button style={{margin: '5px', padding: '3px'}} onClick={this.adjustCount(SUB)}>-</button>
                 <button style={{margin: '5px', padding: '3px'}} onClick={this.adjustAsync(ADD)}>add later</button>
+                .......... <span>Total Person Count: {personCount}</span>
             </div>
         )
     }
 }
 
 export default connect(
-    state => ({count: state}),
+    state => ({count: state.count, personCount: state.person.length}),
     {
         adjustCount,
         adjustAsync
